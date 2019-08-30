@@ -1,8 +1,8 @@
 package bilit
 
 func makePullRegex(str string, pattern ...string) string {
-	if pattern[0] == "" {
-		pattern[0] = ".*"
+	if len(pattern) == 0 {
+		pattern = append(pattern, ".*")
 	}
 	var substitution = "(?P<${groupName}>" + pattern[0] + ")"
 
