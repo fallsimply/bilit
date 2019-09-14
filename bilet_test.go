@@ -22,6 +22,16 @@ func TestPopulate(t *testing.T) {
 	}
 }
 
+func ExamplePopulate() {
+	str := Populate("Hello, I'm {{name}} from {{City}}, {{from_state}}", Data{
+		"name":       "John",
+		"City":       "Dallas",
+		"from_state": "TX",
+	})
+	print(str)
+	//Output: Hello, I'm John from Dallas, TX
+}
+
 func TestMakePullRegex(t *testing.T) {
 	str := makePullRegex(testTemplate)
 	if str != testRegex {

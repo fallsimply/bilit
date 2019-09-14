@@ -9,6 +9,9 @@ var (
 	GroupRegexp = regexp.MustCompile(`(?m){{(?P<groupName>[^{}]*)}}`)
 )
 
+//Data is a data map for bilit
+type Data = map[string]string
+
 // Subgroup Helper Function
 // func makeSubgroupNameMap(re regexp.Regexp) map[int]string {
 // 	result := make(map[int]string)
@@ -19,12 +22,3 @@ var (
 // 	}
 // 	return result
 // }
-
-func main() {
-	str := Populate("Hello, I'm {{name}} from {{City}}, {{from_state}}", map[string]string{
-		"name":       "John",
-		"City":       "Dallas",
-		"from_state": "TX",
-	})
-	print(str)
-}
