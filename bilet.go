@@ -10,7 +10,7 @@ var (
 )
 
 //Data is a data map for bilit
-type Data = map[string]string
+type Data map[string]string
 
 // Subgroup Helper Function
 // func makeSubgroupNameMap(re regexp.Regexp) map[int]string {
