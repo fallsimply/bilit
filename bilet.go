@@ -6,7 +6,7 @@ import (
 
 var (
 	//GroupRegexp extracts the name of a nunjucks style lookup
-	GroupRegexp = regexp.MustCompile(`(?m)[${]{2}(?P<groupName>[^{}]*)[}]{1,2}`)
+	GroupRegexp = regexp.MustCompile(`(?m)[${]{2}(?P<groupName>[^{}$]*)[}]{1,2}`)
 )
 
 //Data is a data map for bilit
