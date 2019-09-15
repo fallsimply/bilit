@@ -1,8 +1,10 @@
 package bilit
 
+//Try it on Go Playground - https://play.golang.org/p/qp5QvkZ-RRZ
+//Special Thanks to Sundrique on Stack Overflow - https://stackoverflow.com/q/29937787/
+
 import (
 	"fmt"
-	"regexp"
 )
 
 func makePullRegex(str string, pattern ...string) string {
@@ -15,19 +17,16 @@ func makePullRegex(str string, pattern ...string) string {
 }
 
 //Pull extracts data from a populated string using a template
-func Pull(template, str string) map[string]string {
-	//Make Regular Expression from template
-	var regex = regexp.MustCompile(makePullRegex(template))
-
-	fmt.Println(regex)
+func (t Tmpl) Pull(str string) map[string]string {
+	fmt.Println(t.regex)
 	matches := map[string]string{}
-	for _, line := range regex.FindAllStringSubmatch(str, -1) {
+	for _, line := range t.regex.FindAllStringSubmatch(str, -1) {
 		for j := range line {
 			n := 1
 			if j != 0 {
 				n = j
 			}
-			name := regex.SubexpNames()[n]
+			name := t.regex.SubexpNames()[n]
 			// Debug Statement
 			// println(name + ": " + line[n])
 			matches[name] = string(line[n])
@@ -36,4 +35,7 @@ func Pull(template, str string) map[string]string {
 	return matches
 }
 
-//Special Thanks to Sundrique on Stack Overflow - https://stackoverflow.com/q/29937787/
+//Pull for old api compatibility
+func Pull(template, str string) map[string]string {
+	return Template(template).Pull(str)
+}
