@@ -20,13 +20,14 @@ func makePullRegex(str string, pattern ...string) string {
 func (t Tmpl) Pull(str string) map[string]string {
 	fmt.Println(t.regex)
 	matches := map[string]string{}
-	for _, line := range t.regex.FindAllStringSubmatch(str, -1) {
+	for _, line := range t.RegEx().FindAllStringSubmatch(str, -1) {
+		println(line)
 		for j := range line {
 			n := 1
 			if j != 0 {
 				n = j
 			}
-			name := t.regex.SubexpNames()[n]
+			name := t.RegEx().SubexpNames()[n]
 			// Debug Statement
 			// println(name + ": " + line[n])
 			matches[name] = string(line[n])
