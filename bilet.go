@@ -20,8 +20,9 @@ type Tmpl struct {
 }
 
 //RegEx makes the pull regular expression
-func (t Tmpl) RegEx() {
+func (t Tmpl) RegEx() *regex.RegEx {
 	t.regex = regexp.MustCompile(makePullRegex(t.template))
+	return t.regex
 }
 
 //Template makes a template
