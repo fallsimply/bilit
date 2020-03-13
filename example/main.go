@@ -1,17 +1,25 @@
 package main
 
 import (
+	//"encoding/json"
+	"fmt"
+
 	"github.com/SimplyCodin/bilit"
 )
 
 func main() {
-	str := bilit.Populate("Hello, I'm {{name}} from {{City}}, {{from_state}}", bilit.Data{
+	bilit.Debug = true
+	const template = "Hello, I'm {{name}} from ${City}, {{from_state}}"
+	var dataSrc = map[string]string{
 		"name":       "John",
 		"City":       "Dallas",
 		"from_state": "TX",
-	})
-	print(str)
-	popstr := "Hello, I'm John from Dallas, TX"
-	test := bilit.Pull("Hello, I'm {{name}} from {{City}}, {{from_state}}", popstr)
-	print(test)
+	}
+
+	var str = bilit.Populate(template, dataSrc)
+	fmt.Println(str, "end")
+	var data = bilit.Pull(template, str)
+	fmt.Println(data)
+	// bts, _ := json.Marshal(data)
+	// fmt.Println(string(bts))
 }
