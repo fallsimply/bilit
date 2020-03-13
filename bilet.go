@@ -1,6 +1,8 @@
 package bilit
 
 import (
+	"log"
+	"os"
 	"regexp"
 )
 
@@ -11,6 +13,7 @@ var (
 	DefaultPattern = ".+"
 	//Debug enables printing of the map passed to a template
 	Debug = false
+	out   = log.New(os.Stdout, "", log.Lshortfile)
 )
 
 //Data is a data map for bilit
@@ -27,6 +30,13 @@ type Tmpl struct {
 func (t Tmpl) RegEx() *regexp.Regexp {
 	t.regex = regexp.MustCompile(makePullRegex(t.template, t.pattern))
 	return t.regex
+}
+
+func init() {
+	out.SetPrefix("[bilit] ")
+	if Debug {
+		out.SetPrefix("[bilit(DEBUG)] ")
+	}
 }
 
 //Template makes a template
