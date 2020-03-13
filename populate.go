@@ -1,15 +1,11 @@
 package bilit
 
-import (
-	"fmt"
-)
-
 func replacer(str []byte, data Data) []byte {
-	var s = GroupRegexp.ReplaceAll(str, []byte("${groupName}"))
+	var s = string(GroupRegexp.ReplaceAll(str, []byte("${groupName}")))
 	if Debug {
-		fmt.Println(data[string(s)])
+		out.Printf("%s: %s\n", s, data[s])
 	}
-	return []byte(data[string(s)])
+	return []byte(data[s])
 }
 
 //Populate populates a template with data
