@@ -33,7 +33,7 @@ func ExamplePopulate() {
 }
 
 func TestMakePullRegex(t *testing.T) {
-	str := makePullRegex(testTemplate)
+	str := makePullRegex(testTemplate, ".+")
 	if str != testRegex {
 		t.Error(testTemplate)
 		t.Error(str)

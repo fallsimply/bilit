@@ -1,5 +1,5 @@
 # Bilit
-[![Try it on Go Playground](https://img.shields.io/static/v1?label=Go%20Playground&message=Try%20It&color=00addc&style=for-the-badge&logo=go)]() ![GitHub](https://img.shields.io/github/license/simplycodin/bilit?style=for-the-badge)
+[![Try it on Go Playground](https://img.shields.io/static/v1?label=Go%20Playground&message=Try%20It&color=00addc&style=for-the-badge&logo=go)](https://play.golang.org/p/n9MtRW_RIlg) ![GitHub](https://img.shields.io/github/license/simplycodin/bilit?style=for-the-badge)
 
 Bilit (pronounced /ˈbilit/) is a bidirectional template library for golang.
 Inspired by Javascript's Template Literals and [Nunjucks](https://mozilla.github.io/nunjucks/templating.html)
