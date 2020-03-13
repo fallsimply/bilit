@@ -6,7 +6,9 @@ import (
 
 func replacer(str []byte, data Data) []byte {
 	var s = GroupRegexp.ReplaceAll(str, []byte("${groupName}"))
-	fmt.Println(data[string(s)])
+	if Debug {
+		fmt.Println(data[string(s)])
+	}
 	return []byte(data[string(s)])
 }
 
