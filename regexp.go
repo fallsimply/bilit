@@ -1,6 +1,8 @@
 package bilit
 
-import "regexp"
+import (
+	"regexp"
+)
 
 var (
 	// GroupRegexp extracts the name of a nunjucks style lookup
@@ -8,36 +10,32 @@ var (
 		`(?m)[${]{2}(?P<groupName>[^{}$]*)[}]{1,2}`,
 	)
 
-	// GroupEscape escapes capture groups - Before
-	GroupEscape = regexp.MustCompile(
-		`(?m)\((?P<Content>[^?].*)\)`,
+	// BeforeEscape escapes characters - Before Groups
+	BeforeEscape = regexp.MustCompile(
+		`(?m)[\[\]().+?^]`,
 	)
 
-	// CharClassEscape escapes character classes - Before
-	CharClassEscape = regexp.MustCompile(
-		`\[(?P<Content>[^?].*)\]`,
-	)
-
-	// QuantityEscape escape quantity specifiers - After
+	// QuantityEscape escape quantity specifiers - After Groups
 	QuantityEscape = regexp.MustCompile(
-		`{(?P<Content>.*)}`,
+		`{(.*)}`,
 	)
+	// AfterEscape escapes characters - After Groups
+	AfterEscape = regexp.MustCompile(`[$]`)
 )
 
 func pullRegex(str string, pattern string) string {
 	var substitution = "(?P<${groupName}>" + pattern + ")"
 
 	if !Unsafe {
-		// Group & Character class are before group replacement to avoid collision with patterns
-		str = GroupEscape.ReplaceAllString(str, `\(${Content}\)`)
-		str = CharClassEscape.ReplaceAllString(str, `\[${Content}\]`)
+		str = BeforeEscape.ReplaceAllString(str, `\$0`)
 	}
 
 	str = GroupRegexp.ReplaceAllString(str, substitution)
 
 	if !Unsafe {
 		// Quantity is after group replacement to avoid collision with template groups
-		str = QuantityEscape.ReplaceAllString(str, `\{${Content}\}`)
+		str = QuantityEscape.ReplaceAllString(str, `\{$1\}`)
+		str = AfterEscape.ReplaceAllString(str, `\$0`)
 	}
 
 	return str
