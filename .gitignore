@@ -1,3 +1,4 @@
 # IDE Config
 .vscode/launch.json
 .idea
+.DS_Store

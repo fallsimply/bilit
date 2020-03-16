@@ -9,7 +9,7 @@ import (
 func main() {
 	bilit.Debug = true
 
-	const template = "Hello, I'm [{{name}}] from (${City}), {{{from_state}}})"
+	const template = "Hello, I'm [{{name}}] from (${City}), {{{from_state}}}"
 
 	dataSrc := map[string]string{
 		"name":       "John",
@@ -18,8 +18,8 @@ func main() {
 	}
 
 	str := bilit.Populate(template, dataSrc)
-	fmt.Println(str)
+	fmt.Println("[Function API]", str)
 
 	data := bilit.Pull(template, str)
-	fmt.Println(data)
+	fmt.Println("[Function API]", data)
 }
