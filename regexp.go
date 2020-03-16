@@ -14,16 +14,31 @@ var (
 	)
 
 	// CharClassEscape escapes character classes - Before
-	CharClassEscape = ``
+	CharClassEscape = regexp.MustCompile(
+		`\[(?P<Content>[^?].*)\]`,
+	)
 
 	// QuantityEscape escape quantity specifiers - After
-	QuantityEscape = `{(?P<Content>[^0-9].*)}`
+	QuantityEscape = regexp.MustCompile(
+		`{(?P<Content>.*)}`,
+	)
 )
 
 func pullRegex(str string, pattern string) string {
 	var substitution = "(?P<${groupName}>" + pattern + ")"
 
-	str = GroupEscape.ReplaceAllString(str, `\(${Content}\)`)
+	if !Unsafe {
+		// Group & Character class are before group replacement to avoid collision with patterns
+		str = GroupEscape.ReplaceAllString(str, `\(${Content}\)`)
+		str = CharClassEscape.ReplaceAllString(str, `\[${Content}\]`)
+	}
 
-	return GroupRegexp.ReplaceAllString(str, substitution)
+	str = GroupRegexp.ReplaceAllString(str, substitution)
+
+	if !Unsafe {
+		// Quantity is after group replacement to avoid collision with template groups
+		str = QuantityEscape.ReplaceAllString(str, `\{${Content}\}`)
+	}
+
+	return str
 }
