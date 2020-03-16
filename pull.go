@@ -1,11 +1,6 @@
 package bilit
 
-func makePullRegex(str string, pattern string) string {
-	var substitution = "(?P<${groupName}>" + pattern + ")"
-	return GroupRegexp.ReplaceAllString(str, substitution)
-}
-
-//Pull extracts data from a populated string using a template
+// Pull extracts data from a populated string using a template
 func (t Tmpl) Pull(str string) map[string]string {
 	if Debug {
 		out.Println(t.RegEx())
@@ -23,7 +18,7 @@ func (t Tmpl) Pull(str string) map[string]string {
 	return matches
 }
 
-//Pull for old api compatibility
+// Pull for old api compatibility
 func Pull(template, str string) map[string]string {
 	return Template(template).Pull(str)
 }
