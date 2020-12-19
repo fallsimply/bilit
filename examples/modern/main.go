@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/SimplyCodin/bilit"
+	"github.com/fallsimply/bilit"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 ![Bilit Logo](./assets/Bilit%20(README).svg)
 
-[![MIT Licensed][License Badge]](./LICENSE) [![Latest Version][Latest Badge]](https://github.com/simplycodin/bilit/releases/latest)
-[![pkg.go.dev docs][Docs Badge]](https://pkg.go.dev/github.com/simplycodin/bilit)
+[![MIT Licensed][License Badge]](./LICENSE) [![Latest Version][Latest Badge]](https://github.com/fallsimply/bilit/releases/latest)
+[![pkg.go.dev docs][Docs Badge]](https://pkg.go.dev/github.com/fallsimply/bilit)
 
 Bilit (pronounced /ˈbilit/) is a bidirectional template library for Go.
 Inspired by Javascript's Template Literals and [Nunjucks](https://mozilla.github.io/nunjucks/templating.html)
@@ -52,7 +52,7 @@ fmt.Println(data)
 [Play Badge]: https://img.shields.io/static/v1?label=Go%20Playground&message=Try%20It&color=00addc&style=for-the-badge&logo=go
 [Modern API]: https://play.golang.org
 [Function API]: https://play.golang.org/p/n9MtRW_RIlg
-[License Badge]: https://img.shields.io/github/license/simplycodin/bilit?style=for-the-badge
-[Latest Badge]: https://img.shields.io/github/v/release/simplycodin/bilit?style=for-the-badge
+[License Badge]: https://img.shields.io/github/license/fallsimply/bilit?style=for-the-badge
+[Latest Badge]: https://img.shields.io/github/v/release/fallsimply/bilit?style=for-the-badge
 [Open Badge]: https://img.shields.io/static/v1?label=Open&message=Example%20Folder&color=green&style=for-the-badge
 [Docs Badge]: https://img.shields.io/static/v1?label=pkg.go.dev&message=Docs&color=00addc&style=for-the-badge&logo=go

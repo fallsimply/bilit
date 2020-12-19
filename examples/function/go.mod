@@ -1,7 +1,7 @@
-module github.com/SimplyCodin/bilit/examples/function
+module github.com/fallsimply/bilit/examples/function
 
 go 1.12
 
-require github.com/SimplyCodin/bilit v0.4.1
+require github.com/fallsimply/bilit v0.4.1
 
-replace github.com/SimplyCodin/bilit => ../../
+replace github.com/fallsimply/bilit => ../../
