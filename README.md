@@ -1,10 +1,10 @@
-![Bilit Logo](./assets/Bilit%20(README).svg)
+![Bilit Logo](./assets/readme.svg)
 
-[![MIT Licensed][License Badge]](./LICENSE) [![Latest Version][Latest Badge]](https://github.com/fallsimply/bilit/releases/latest)
-[![pkg.go.dev docs][Docs Badge]](https://pkg.go.dev/github.com/fallsimply/bilit)
+[![MIT Licensed][License Badge]][LICENSE] [![Latest Version][Release Badge]][Latest Version]
+[![pkg.go.dev docs][Docs Badge]][Doc Site]
 
 Bilit (pronounced /ˈbilit/) is a bidirectional template library for Go.
-Inspired by Javascript's Template Literals and [Nunjucks](https://mozilla.github.io/nunjucks/templating.html)
+Syntax inspired by Javascript's Template Literals and [Nunjucks][Nujucks Site]
 
 Powered by Regular Expressions
 
@@ -30,7 +30,7 @@ fmt.Println(data)
 ```
 
 ### Function API (Old API) - Basic:
-[![Open Example Folder][Open Badge]](./examples/modern) [![Try it on Go Playground][Play Badge]][Function API]
+[![Open Example Folder][Open Badge]](./examples/function) [![Try it on Go Playground][Play Badge]][Function API]
 ``` go
 const template = "Hello, I'm {{name}} from ${City}, {{from_state}}"
 
@@ -49,10 +49,16 @@ fmt.Println(data)
 // map[City:Dallas from_state:TX name:John]
 ```
 
-[Play Badge]: https://img.shields.io/static/v1?label=Go%20Playground&message=Try%20It&color=00addc&style=for-the-badge&logo=go
+[Play Badge]: https://img.shields.io/static/v1?label=Go%20Playground&message=Try%20It&style=for-the-badge&logo=go&color=4E98A6&labelColor=333A47
+[License Badge]: https://img.shields.io/github/license/fallsimply/bilit?style=for-the-badge&color=7AA64E&labelColor=333A47
+[Release Badge]: https://img.shields.io/github/v/release/fallsimply/bilit?style=for-the-badge&color=4E5CA6&labelColor=333A47
+[Open Badge]: https://img.shields.io/static/v1?label=Open&message=Example%20Folder&style=for-the-badge&color=7AA64E&labelColor=333A47
+[Docs Badge]: https://img.shields.io/static/v1?label=pkg.go.dev&message=Docs&style=for-the-badge&logo=go&color=4E98A6&labelColor=333A47
+
 [Modern API]: https://play.golang.org
 [Function API]: https://play.golang.org/p/n9MtRW_RIlg
-[License Badge]: https://img.shields.io/github/license/fallsimply/bilit?style=for-the-badge
-[Latest Badge]: https://img.shields.io/github/v/release/fallsimply/bilit?style=for-the-badge
-[Open Badge]: https://img.shields.io/static/v1?label=Open&message=Example%20Folder&color=green&style=for-the-badge
-[Docs Badge]: https://img.shields.io/static/v1?label=pkg.go.dev&message=Docs&color=00addc&style=for-the-badge&logo=go
+
+[Latest Version]: https://github.com/fallsimply/bilit/releases/latest
+[Doc Site]: https://pkg.go.dev/github.com/fallsimply/bilit
+[License]: ./LICENSE
+[Nujucks Site]: https://mozilla.github.io/nunjucks/templating.html
