@@ -2,6 +2,7 @@ package bilit
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -21,14 +22,59 @@ var testData = map[string]string{
 	"from_state": "TX",
 }
 
+func BenchmarkPopulate(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		testTemplate.Populate(testData)
+	}
+}
+
+func BenchmarkPull(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		testTemplate.Pull("Hello, I'm John from Dallas, TX")
+	}
+}
+
+func BenchmarkTemplate(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Template(testTmplStr)
+	}
+}
+
 func TestPopulate(t *testing.T) {
-	Debug = true
 	str := testTemplate.Populate(testData)
 	if str != "Hello, I'm John from Dallas, TX" {
 		t.Error(str)
 	}
 }
 
+func TestFunctionalPopulate(t *testing.T) {
+	str := Populate(testTmplStr, testData)
+	if str != "Hello, I'm John from Dallas, TX" {
+		t.Error(str)
+	}
+}
+
+func TestPull(t *testing.T) {
+	data := testTemplate.Pull("Hello, I'm John from Dallas, TX")
+	if !reflect.DeepEqual(data, testData) {
+		t.Error(data)
+	}
+}
+
+func TestFunctionalPull(t *testing.T) {
+	data := Pull(testTmplStr, "Hello, I'm John from Dallas, TX")
+	if !reflect.DeepEqual(data, testData) {
+		t.Error(data)
+	}
+}
+
+func TestMakePullRegex(t *testing.T) {
+	str := pullRegex(testTemplate.template, ".+")
+	if str != testRegex {
+		t.Error("Hardcoded:", testRegex)
+		t.Error("Generated:", str)
+	}
+}
 func ExampleTmpl_Populate() {
 	Debug = true
 	tmpl := Template("Hello, I'm {{name}} from ${City}, {{from_state}}")
@@ -47,22 +93,4 @@ func ExampleTmpl_Pull() {
 	str := tmpl.Pull("Hello, I'm John from Dallas, TX")
 	fmt.Print(str)
 	// Output: map[City:Dallas from_state:TX name:John]
-}
-
-func TestMakePullRegex(t *testing.T) {
-	Debug = true
-	fmt.Println(testTemplate.template)
-	str := pullRegex(testTemplate.template, ".+")
-	if str != testRegex {
-		t.Error("Hardcoded:", testRegex)
-		t.Error("Generated:", str)
-	}
-}
-
-func TestFunctionalPopulate(t *testing.T) {
-	Debug = true
-	str := Populate(testTmplStr, testData)
-	if str != "Hello, I'm John from Dallas, TX" {
-		t.Error(str)
-	}
 }
