@@ -76,7 +76,6 @@ func TestMakePullRegex(t *testing.T) {
 	}
 }
 func ExampleTmpl_Populate() {
-	Debug = true
 	tmpl := Template("Hello, I'm {{name}} from ${City}, {{from_state}}")
 	str := tmpl.Populate(map[string]string{
 		"name":       "John",
@@ -88,7 +87,6 @@ func ExampleTmpl_Populate() {
 }
 
 func ExampleTmpl_Pull() {
-	Debug = true
 	tmpl := Template("Hello, I'm {{name}} from ${City}, {{from_state}}")
 	str := tmpl.Pull("Hello, I'm John from Dallas, TX")
 	fmt.Print(str)

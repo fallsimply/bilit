@@ -2,9 +2,7 @@ package bilit
 
 func replacer(str []byte, data map[string]string) []byte {
 	var s = string(GroupRegexp.ReplaceAll(str, []byte("${groupName}")))
-	if Debug {
-		out.Printf("%s: %s\n", s, data[s])
-	}
+
 	return []byte(data[s])
 }
 

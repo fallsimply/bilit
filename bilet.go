@@ -1,8 +1,6 @@
 package bilit
 
 import (
-	"log"
-	"os"
 	"regexp"
 )
 
@@ -10,20 +8,9 @@ var (
 	// DefaultPattern is the default pattern for the regex
 	DefaultPattern = ".+"
 
-	// Debug enables printing of the map passed to a template
-	Debug = false
 	// Unsafe disables RegExp escaping
 	Unsafe = false
-
-	out = log.New(os.Stdout, "", log.Lshortfile)
 )
-
-func init() {
-	out.SetPrefix("[bilit] ")
-	if Debug {
-		out.SetPrefix("[bilit (DEBUG)] ")
-	}
-}
 
 // Tmpl is a bilit template
 type Tmpl struct {
